@@ -8,7 +8,7 @@
 DIR_DXL     = ../..
 DIR_OBJS    = ./.objects
 
-INSTALL_ROOT = /usr/local
+INSTALL_ROOT = /buildroot
 
 MAJ_VERSION = 2
 MIN_VERSION = 0
