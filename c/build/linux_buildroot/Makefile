@@ -8,7 +8,7 @@
 DIR_DXL     = ../..
 DIR_OBJS    = ./.objects
 
-INSTALL_ROOT = /usr/local
+INSTALL_ROOT = /buildroot
 
 MAJ_VERSION = 2
 MIN_VERSION = 0
@@ -21,10 +21,10 @@ TARGET3     = $(TARGET).$(MAJ_VERSION).$(MIN_VERSION).$(REV_VERSION)
 
 CHK_DIR_EXISTS = test -d
 PRINT       = echo
-STRIP       = strip
-AR          = ar
+STRIP       = ${CROSS_ROOT}/bin/${CROSS_TRIPLE}-strip
+AR          = ${CROSS_ROOT}/bin/${CROSS_TRIPLE}-ar
 ARFLAGS     = cr
-LD          = g++
+LD          = ${CROSS_ROOT}/bin/${CROSS_TRIPLE}-g++
 LDFLAGS     = -shared -fPIC #-Wl,-soname,dxl
 LD_CONFIG   = ldconfig
 CP          = cp
@@ -33,8 +33,8 @@ RM          = rm
 RM_ALL      = rm -rf
 SYMLINK     = ln -s
 MKDIR       = mkdir
-CC          = gcc
-CX          = g++
+CC          = ${CROSS_ROOT}/bin/${CROSS_TRIPLE}-gcc
+CX          = ${CROSS_ROOT}/bin/${CROSS_TRIPLE}-g++
 CCFLAGS     = -O2 -O3 -DLINUX -D_GNU_SOURCE -Wall -c $(INCLUDES) -fPIC -fcommon -g
 CXFLAGS     = -O2 -O3 -DLINUX -D_GNU_SOURCE -Wall -c $(INCLUDES) -fPIC -fcommon -g
 INCLUDES    += -I$(DIR_DXL)/include/dynamixel_sdk
